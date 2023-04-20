@@ -27,7 +27,6 @@ public class CollectionsDemonstrator {
 	public void runProcess() {
 		setPersonList();
 		shufflePersonList();
-		//List<Person> pl = getPersonList();
 		for (Person p : personList) {
 			System.out.println(p.getID() + "," + p.getLastName() + "," + p.getFirstName());
 		}

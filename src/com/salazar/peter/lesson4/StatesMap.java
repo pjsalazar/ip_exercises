@@ -36,14 +36,16 @@ public class StatesMap {
 	
 	
 	public static void main (String[] args) {
+		
 		StatesMap sm = new StatesMap();
+
+		TreeMap <String, String> sMap = sm.orderByAbbrev();
+		for (Map.Entry<String,String> entry : sMap.entrySet()) {
+			System.out.println(entry);
+		}
 		
-		//sm.fillStates();
-		//HashMap<String, String> smap = sm.getMap();
-		
-		TreeMap <String, String> smap = sm.revOrderByAbbrev();
-		
-		for (Map.Entry<String,String> entry : smap.entrySet()) {
+		TreeMap <String, String> sMapRev = sm.revOrderByAbbrev();
+		for (Map.Entry<String,String> entry : sMapRev.entrySet()) {
 			System.out.println(entry);
 		}
 	}
