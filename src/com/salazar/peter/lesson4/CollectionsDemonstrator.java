@@ -12,61 +12,50 @@ package com.salazar.peter.lesson4;
 *@updates:
 *************************************************/
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.UUID;
+
 
 public class CollectionsDemonstrator {
-
+	
 	private List<Person> personList;
 	
 	public static void main (String[] args) {
 		CollectionsDemonstrator cd = new CollectionsDemonstrator();
 		cd.runProcess();
-		
 	}
 	
+	// This is your "controller method" - don't do things besides call other methods
 	public void runProcess() {
-		setPersonList();
+		createPersonList();
 		shufflePersonList();
-		for (Person p : personList) {
-			System.out.println(p.getID() + "," + p.getLastName() + "," + p.getFirstName());
-		}
+		displayPersonList();
 		
 		String[] stringArr = {"one", "two"};
 		List <String> stringList = convertStringArr(stringArr);
 		System.out.println(stringList + ":" + stringList.getClass());
 	}
 	
-	public void setPersonList() {
+	public void createPersonList() {
 		// Populates personList with individuals
-		Person[] players = new Person[3];
-		
-		players[0] = new Person();
-		players[0].setID(23);
-		players[0].setFirstName("Michael");
-		players[0].setLastName("Jordan");
-		
-		players[1] = new Person();
-		players[1].setID(15);
-		players[1].setFirstName("Nikola");
-		players[1].setLastName("Jokic");
-		
-		players[2] = new Person();
-		players[2].setID(34);
-		players[2].setFirstName("Giannis");
-		players[2].setLastName("Antetokounmpo");
-		
 		personList = new ArrayList<Person>();
-		for (Person p: players) {
-			personList.add(p);
-		}
+		
+		personList.add(new Person(UUID.randomUUID(), "Michael", "Jordan"));
+		personList.add(new Person(UUID.randomUUID(), "Fat", "Lever"));
+		personList.add(new Person(UUID.randomUUID(), "Pete", "Maravich"));			
 	}
 	
 	public void shufflePersonList() {
 		Collections.shuffle(personList);
 	}
 	
-	public List<Person> getPersonList(){
-		return personList;
+	public void displayPersonList() {
+		for (Person p : personList) {
+			System.out.println(p.getFirstName() + p.getLastName() + p.getPersonId().toString());
+		}
 	}
 	
 	public List<String> convertStringArr(String[] arr){

@@ -1,5 +1,6 @@
 package com.salazar.peter.lesson4;
 
+// Don't import .*
 import java.util.*;
 
 /**************************************************
@@ -14,80 +15,44 @@ import java.util.*;
 *@updates:
 *************************************************/
 
+
 public class StatesMap {
 
-	private HashMap<String, String> states;
-	private String[] stateNames = {
-			"Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
-			"Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-			"Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", 
-			"Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", 
-			"New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", 
-			"Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", 
-			"Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", 
-			"Wisconsin", "Wyoming"
-	};
-	private String[] stateAbs = {
-			"AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", 
-			"KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", 
-			"NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", 
-			"VA", "WA", "WV", "WI", "WY"
-	};
-	
+	// Code to the interface - initialize this as a Map
+	private Map<String, String> statesThatMatter;	
 	
 	public static void main (String[] args) {
+		boolean rev = true;
+		StatesMap sm = new StatesMap(rev);
+		sm.display();
+	}
+	
+	public StatesMap(boolean rev) {
+		this.fillStates(rev);
+	}
+	
+	private void fillStates(boolean rev) {
+		// Populates the states HashMap  based on whether we indicated forward or backward
+		if (rev) statesThatMatter = new TreeMap<>(Comparator.reverseOrder());
+		else statesThatMatter = new TreeMap<>();
 		
-		StatesMap sm = new StatesMap();
-
-		TreeMap <String, String> sMap = sm.orderByAbbrev();
-		for (Map.Entry<String,String> entry : sMap.entrySet()) {
+		statesThatMatter.put("AZ",  "Arizona");
+		statesThatMatter.put("CO", "Colorado");
+		statesThatMatter.put("NV", "Nevada");
+		statesThatMatter.put("NV", "Nevada");
+		statesThatMatter.put("NM", "New Mexico");
+		statesThatMatter.put("ID", "Idaho");
+		statesThatMatter.put("MT", "Montana");
+		statesThatMatter.put("WY", "Wyoming");
+		statesThatMatter.put("CA", "California");
+		statesThatMatter.put("WA", "Washington");
+		statesThatMatter.put("OR", "Oregon");
+	}
+	
+	private void display() {
+		for (Map.Entry<String, String> entry : statesThatMatter.entrySet()) {
 			System.out.println(entry);
 		}
-		
-		TreeMap <String, String> sMapRev = sm.revOrderByAbbrev();
-		for (Map.Entry<String,String> entry : sMapRev.entrySet()) {
-			System.out.println(entry);
-		}
-	}
-	
-	private void fillStates() {
-		// Populates the original states HashMap
-		
-		states = new HashMap<>(stateNames.length);
-		
-		for(int i = 0; i < stateNames.length; i++) {
-			states.put(stateAbs[i], stateNames[i]);
-		}
-	}
-	
-	public TreeMap<String, String> orderByAbbrev() {
-		// returns a treemap sorted by state abbreviations
-		
-		//Initializes HashMap if not already populated
-		fillStates();
-		
-		// Populate new TreeMap (self-sorting)
-		TreeMap<String, String> sorted = new TreeMap<>();
-		sorted.putAll(states);
-		
-		return sorted;
-		
-	}
-	
-	public TreeMap<String, String> revOrderByAbbrev(){
-		// returns a treemap sorted in reverse order of state abbreviations
-
-		// Initialize HashMap
-		fillStates();
-		
-		// Populate new TreeMap
-		TreeMap <String, String> sorted = new TreeMap<>(Comparator.reverseOrder());
-		sorted.putAll(states);
-		
-		return sorted;
-	}
-	
-	public HashMap <String, String> getMap(){
-		return states;
+		System.out.println("\n");
 	}
 }

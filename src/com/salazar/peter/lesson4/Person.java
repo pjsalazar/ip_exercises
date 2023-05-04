@@ -1,5 +1,7 @@
 package com.salazar.peter.lesson4;
 
+import java.util.UUID;
+
 /**************************************************
 *<b>Title</b>: Person
 *<b>Project</b>: Intro to Programming, Week 4
@@ -12,33 +14,67 @@ package com.salazar.peter.lesson4;
 *@updates:
 *************************************************/
 
+// Implement serializable whenever we have a "Java Bean"
+// That is, members are private, getters/setters, default constructor, etc
 public class Person {
 
-	private int personID;
+	// Java object "UUID" that maintains universality - DON'T USE AN INT
+	private UUID personId;
 	private String firstName;
 	private String lastName;
 	
-	public void setID(int id) {
-		personID = id;
+	/**
+	 * @param personId
+	 * @param firstName
+	 * @param lastName
+	 */
+	public Person(UUID personId, String firstName, String lastName) {
+		super();
+		this.personId = personId;
+		this.firstName = firstName;
+		this.lastName = lastName;
 	}
-	
-	public void setFirstName(String fn) {
-		firstName = fn;
+
+	/**
+	 * @return the personId
+	 */
+	public UUID getPersonId() {
+		return personId;
 	}
-	
-	public void setLastName(String ln) {
-		lastName = ln;
+
+	/**
+	 * @param personId the personId to set
+	 */
+	public void setPersonId(UUID personId) {
+		this.personId = personId;
 	}
-	
-	public int getID() {
-		return personID;
-	}
-	
+
+	/**
+	 * @return the firstName
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
-	
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	/**
+	 * @return the lastName
+	 */
 	public String getLastName() {
 		return lastName;
 	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
 }
