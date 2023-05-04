@@ -1,7 +1,8 @@
 package com.salazar.peter.lesson4;
 
-// Don't import .*
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.Comparator;
 
 /**************************************************
 *<b>Title</b>: StatesMap
@@ -15,7 +16,6 @@ import java.util.*;
 *@updates:
 *************************************************/
 
-
 public class StatesMap {
 
 	// Code to the interface - initialize this as a Map
@@ -27,10 +27,21 @@ public class StatesMap {
 		sm.display();
 	}
 	
+	/**
+	 * Constructor - fills the class variable statesThatMatter 
+	 * based on the order specified with "rev"
+	 * @param rev
+	 */
 	public StatesMap(boolean rev) {
 		this.fillStates(rev);
 	}
 	
+	
+		/**
+		 * Instantiates the class variable as a TreeMap
+		 * Populates with state data, in the order corresponding to the user input "rev"
+		 * @param rev
+		 */
 	private void fillStates(boolean rev) {
 		// Populates the states HashMap  based on whether we indicated forward or backward
 		if (rev) statesThatMatter = new TreeMap<>(Comparator.reverseOrder());
@@ -49,6 +60,9 @@ public class StatesMap {
 		statesThatMatter.put("OR", "Oregon");
 	}
 	
+		/**
+		 * Prints out the class variable statesThatMatter by element
+		 */
 	private void display() {
 		for (Map.Entry<String, String> entry : statesThatMatter.entrySet()) {
 			System.out.println(entry);

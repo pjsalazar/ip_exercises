@@ -28,7 +28,9 @@ public class CollectionsDemonstrator {
 		cd.runProcess();
 	}
 	
-	// This is your "controller method" - don't do things besides call other methods
+		/**
+		 * Controller method
+		 */
 	public void runProcess() {
 		createPersonList();
 		shufflePersonList();
@@ -39,8 +41,10 @@ public class CollectionsDemonstrator {
 		System.out.println(stringList + ":" + stringList.getClass());
 	}
 	
+		/**
+		 * Instantiates and populates the class variable personList
+		 */
 	public void createPersonList() {
-		// Populates personList with individuals
 		personList = new ArrayList<Person>();
 		
 		personList.add(new Person(UUID.randomUUID(), "Michael", "Jordan"));
@@ -48,16 +52,27 @@ public class CollectionsDemonstrator {
 		personList.add(new Person(UUID.randomUUID(), "Pete", "Maravich"));			
 	}
 	
+		/**
+		 * Shuffles class variable personList in-place
+		 */
 	public void shufflePersonList() {
 		Collections.shuffle(personList);
 	}
 	
+		/**
+		 * Prints out the elements of personList
+		 */
 	public void displayPersonList() {
 		for (Person p : personList) {
 			System.out.println(p.getFirstName() + p.getLastName() + p.getPersonId().toString());
 		}
 	}
 	
+		/**
+		 * Converts an array of Strings into a List
+		 * @param An array of Strings
+		 * @return An List containing the same elements
+		 */
 	public List<String> convertStringArr(String[] arr){
 		return Arrays.asList(arr);
 	}
