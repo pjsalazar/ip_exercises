@@ -6,4 +6,5 @@
  *
  */
 module ip_exercises {
+	requires java.logging;
 }

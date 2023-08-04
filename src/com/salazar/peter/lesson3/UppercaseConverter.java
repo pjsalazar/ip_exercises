@@ -22,6 +22,12 @@ import java.io.PrintWriter;
 *************************************************/
 public class UppercaseConverter {
 	
+	// Create an constant up here with the file name
+	// Otherwise, just adjust your mindset for these types of assignments: 
+	// Make something really general on top: your controller/principal class should just read/write
+	// ANY type of file - byte/text, whatever; and your other class should take care of the specifics
+	// Like, try to contain specificity to a single class, sort of
+	
 	public static void main (String[] args) throws IOException {
 		UppercaseConverter uc = new UppercaseConverter();
 		uc.process(new File("cuicatl.txt"), new File("uppercase.txt"));
