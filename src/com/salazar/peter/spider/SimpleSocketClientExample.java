@@ -23,6 +23,7 @@ public class SimpleSocketClientExample {
 	
 	public static void main (String[] args) {
 		String server = "127.0.0.1";
+//		String server = "smt-stage.qa.siliconmtn.com";
 		String path = "/";
 		SimpleSocketClientExample SSCE = new SimpleSocketClientExample(); 
 		SSCE.printWebpage(server, path); 
